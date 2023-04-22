@@ -11,7 +11,7 @@ using namespace web::http;
 using namespace web::http::client;
 
 
-// Define your API access key
+// Define the PositionStack API key
 const string API_KEY = "16d468a117f42e330fdc8178a07fc19a";
 
 // Define the base URL of the API
@@ -42,16 +42,18 @@ void get_lat_long_from_address(const string& address, double& latitude, double& 
     }
 }
 
+// Use the latitude and longitude to get the weather forecast using OpenWeatherMap API
 bool handle_get_weather(midterm_project::Weather::Request& req, midterm_project::Weather::Response& res)
 {
     double latitude, longitude;
+    // Call the function and get the latitude and longitude for the given address
     get_lat_long_from_address(req.address, latitude, longitude);
 
+    // OpenWeatherMap API Key
     utility::string_t apiKey = "46a7ad292c24f67d353806712fc3e881";
     // make a request to the OpenWeatherMap API to get the current weather for the requested location
     utility::string_t url = U("http://api.openweathermap.org/data/2.5/weather?lat=") + std::to_string(latitude) +
                             U("&lon=") + std::to_string(longitude) + U("&units=metric&appid=" + U(apiKey));
-
     http_client client(url);
     http_response response = client.request(methods::GET).get();
 
@@ -62,8 +64,6 @@ bool handle_get_weather(midterm_project::Weather::Request& req, midterm_project:
 
     // populate the response message with the temperature and description
     res.temperature = temperature;
-    // res.temperature = 37.5;
-
     res.description = std::string(description.begin(), description.end());
     return true;
 }

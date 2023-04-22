@@ -14,6 +14,7 @@ int main(int argc, char** argv)
     ros::ServiceClient client = nh.serviceClient<midterm_project::Weather>("get_weather");
 
     string address;
+    // Get the user input until 0 is inputted
     while (true)
     {
         cout << "Enter an address (or 0 to exit): ";
