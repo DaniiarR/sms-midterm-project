@@ -1,5 +1,6 @@
 float64 latitude
 float64 longitude
+string address
 ---
 float64 temperature
 string description

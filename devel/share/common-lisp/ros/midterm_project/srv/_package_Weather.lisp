@@ -3,6 +3,8 @@
           LATITUDE
           LONGITUDE-VAL
           LONGITUDE
+          ADDRESS-VAL
+          ADDRESS
           TEMPERATURE-VAL
           TEMPERATURE
           DESCRIPTION-VAL

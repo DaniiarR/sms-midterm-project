@@ -54,6 +54,10 @@
   <depend>message_runtime</depend>
   <depend>std_msgs</depend>
   <depend>message_generation</depend>
+  <build_depend>cpprestsdk</build_depend>
+  <build_depend>openssl</build_depend>
+  <exec_depend>cpprestsdk</exec_depend>
+  <exec_depend>openssl</exec_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->

@@ -40,7 +40,7 @@ template<>
 struct MD5Sum< ::midterm_project::Weather > {
   static const char* value()
   {
-    return "204ae4bdd15d2eba6c7e323a2fe04a4e";
+    return "6c4fff7ab8a37c28c986d4cb0e252774";
   }
 
   static const char* value(const ::midterm_project::Weather&) { return value(); }

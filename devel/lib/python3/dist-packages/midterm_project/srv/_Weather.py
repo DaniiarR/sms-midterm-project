@@ -8,14 +8,15 @@ import struct
 
 
 class WeatherRequest(genpy.Message):
-  _md5sum = "680c6dc7da65a2421a822205dcbdb600"
+  _md5sum = "bb885d452db3635f26cf1a2915f879f6"
   _type = "midterm_project/WeatherRequest"
   _has_header = False  # flag to mark the presence of a Header object
   _full_text = """float64 latitude
 float64 longitude
+string address
 """
-  __slots__ = ['latitude','longitude']
-  _slot_types = ['float64','float64']
+  __slots__ = ['latitude','longitude','address']
+  _slot_types = ['float64','float64','string']
 
   def __init__(self, *args, **kwds):
     """
@@ -25,7 +26,7 @@ float64 longitude
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       latitude,longitude
+       latitude,longitude,address
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -38,9 +39,12 @@ float64 longitude
         self.latitude = 0.
       if self.longitude is None:
         self.longitude = 0.
+      if self.address is None:
+        self.address = ''
     else:
       self.latitude = 0.
       self.longitude = 0.
+      self.address = ''
 
   def _get_types(self):
     """
@@ -56,6 +60,12 @@ float64 longitude
     try:
       _x = self
       buff.write(_get_struct_2d().pack(_x.latitude, _x.longitude))
+      _x = self.address
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -72,6 +82,15 @@ float64 longitude
       start = end
       end += 16
       (_x.latitude, _x.longitude,) = _get_struct_2d().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.address = str[start:end].decode('utf-8', 'rosmsg')
+      else:
+        self.address = str[start:end]
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -86,6 +105,12 @@ float64 longitude
     try:
       _x = self
       buff.write(_get_struct_2d().pack(_x.latitude, _x.longitude))
+      _x = self.address
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -103,6 +128,15 @@ float64 longitude
       start = end
       end += 16
       (_x.latitude, _x.longitude,) = _get_struct_2d().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.address = str[start:end].decode('utf-8', 'rosmsg')
+      else:
+        self.address = str[start:end]
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -266,6 +300,6 @@ def _get_struct_d():
     return _struct_d
 class Weather(object):
   _type          = 'midterm_project/Weather'
-  _md5sum = '204ae4bdd15d2eba6c7e323a2fe04a4e'
+  _md5sum = '6c4fff7ab8a37c28c986d4cb0e252774'
   _request_class  = WeatherRequest
   _response_class = WeatherResponse

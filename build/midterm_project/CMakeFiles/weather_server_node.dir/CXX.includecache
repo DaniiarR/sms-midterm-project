@@ -49,6 +49,8 @@ ros/message_operations.h
 /home/daniiarr/catkin_ws/src/midterm_project/src/WeatherServer.cpp
 ros/ros.h
 -
+string
+-
 midterm_project/Weather.h
 -
 cpprest/http_client.h

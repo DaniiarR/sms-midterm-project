@@ -20,17 +20,19 @@
 
 (defclass midterm_project::WeatherRequest
   :super ros::object
-  :slots (_latitude _longitude ))
+  :slots (_latitude _longitude _address ))
 
 (defmethod midterm_project::WeatherRequest
   (:init
    (&key
     ((:latitude __latitude) 0.0)
     ((:longitude __longitude) 0.0)
+    ((:address __address) "")
     )
    (send-super :init)
    (setq _latitude (float __latitude))
    (setq _longitude (float __longitude))
+   (setq _address (string __address))
    self)
   (:latitude
    (&optional __latitude)
@@ -38,6 +40,9 @@
   (:longitude
    (&optional __longitude)
    (if __longitude (setq _longitude __longitude)) _longitude)
+  (:address
+   (&optional __address)
+   (if __address (setq _address __address)) _address)
   (:serialization-length
    ()
    (+
@@ -45,6 +50,8 @@
     8
     ;; float64 _longitude
     8
+    ;; string _address
+    4 (length _address)
     ))
   (:serialize
    (&optional strm)
@@ -54,6 +61,8 @@
        (sys::poke _latitude (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
      ;; float64 _longitude
        (sys::poke _longitude (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+     ;; string _address
+       (write-long (length _address) s) (princ _address s)
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
@@ -62,6 +71,8 @@
      (setq _latitude (sys::peek buf ptr- :double)) (incf ptr- 8)
    ;; float64 _longitude
      (setq _longitude (sys::peek buf ptr- :double)) (incf ptr- 8)
+   ;; string _address
+     (let (n) (setq n (sys::peek buf ptr- :integer)) (incf ptr- 4) (setq _address (subseq buf ptr- (+ ptr- n))) (incf ptr- n))
    ;;
    self)
   )
@@ -118,7 +129,7 @@
   :super ros::object
   :slots ())
 
-(setf (get midterm_project::Weather :md5sum-) "204ae4bdd15d2eba6c7e323a2fe04a4e")
+(setf (get midterm_project::Weather :md5sum-) "6c4fff7ab8a37c28c986d4cb0e252774")
 (setf (get midterm_project::Weather :datatype-) "midterm_project/Weather")
 (setf (get midterm_project::Weather :request) midterm_project::WeatherRequest)
 (setf (get midterm_project::Weather :response) midterm_project::WeatherResponse)
@@ -126,21 +137,23 @@
 (defmethod midterm_project::WeatherRequest
   (:response () (instance midterm_project::WeatherResponse :init)))
 
-(setf (get midterm_project::WeatherRequest :md5sum-) "204ae4bdd15d2eba6c7e323a2fe04a4e")
+(setf (get midterm_project::WeatherRequest :md5sum-) "6c4fff7ab8a37c28c986d4cb0e252774")
 (setf (get midterm_project::WeatherRequest :datatype-) "midterm_project/WeatherRequest")
 (setf (get midterm_project::WeatherRequest :definition-)
       "float64 latitude
 float64 longitude
+string address
 ---
 float64 temperature
 string description
 ")
 
-(setf (get midterm_project::WeatherResponse :md5sum-) "204ae4bdd15d2eba6c7e323a2fe04a4e")
+(setf (get midterm_project::WeatherResponse :md5sum-) "6c4fff7ab8a37c28c986d4cb0e252774")
 (setf (get midterm_project::WeatherResponse :datatype-) "midterm_project/WeatherResponse")
 (setf (get midterm_project::WeatherResponse :definition-)
       "float64 latitude
 float64 longitude
+string address
 ---
 float64 temperature
 string description
@@ -148,6 +161,6 @@ string description
 
 
 
-(provide :midterm_project/Weather "204ae4bdd15d2eba6c7e323a2fe04a4e")
+(provide :midterm_project/Weather "6c4fff7ab8a37c28c986d4cb0e252774")
 
 

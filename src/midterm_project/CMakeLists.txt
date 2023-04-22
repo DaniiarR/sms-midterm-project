@@ -133,16 +133,20 @@ include ${catkin_INCLUDE_DIRS}
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/midterm_project_node.cpp)
 find_package(cpprestsdk REQUIRED)
+find_package(OpenSSL REQUIRED)
 
 add_executable(weather_server_node src/WeatherServer.cpp) 
 target_link_libraries(weather_server_node
  ${catkin_LIBRARIES}
- cpprestsdk::cpprest)
+ cpprestsdk::cpprest
+ stdc++fs)
 
 add_executable(weather_client_node src/WeatherClient.cpp)
 target_link_libraries(weather_client_node 
 ${catkin_LIBRARIES}
-cpprestsdk::cpprest)
+cpprestsdk::cpprest
+OpenSSL::SSL
+stdc++fs)
 
 
 ## Rename C++ executable without prefix

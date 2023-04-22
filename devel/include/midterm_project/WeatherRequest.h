@@ -25,11 +25,13 @@ struct WeatherRequest_
 
   WeatherRequest_()
     : latitude(0.0)
-    , longitude(0.0)  {
+    , longitude(0.0)
+    , address()  {
     }
   WeatherRequest_(const ContainerAllocator& _alloc)
     : latitude(0.0)
-    , longitude(0.0)  {
+    , longitude(0.0)
+    , address(_alloc)  {
   (void)_alloc;
     }
 
@@ -40,6 +42,9 @@ struct WeatherRequest_
 
    typedef double _longitude_type;
   _longitude_type longitude;
+
+   typedef std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>> _address_type;
+  _address_type address;
 
 
 
@@ -71,7 +76,8 @@ template<typename ContainerAllocator1, typename ContainerAllocator2>
 bool operator==(const ::midterm_project::WeatherRequest_<ContainerAllocator1> & lhs, const ::midterm_project::WeatherRequest_<ContainerAllocator2> & rhs)
 {
   return lhs.latitude == rhs.latitude &&
-    lhs.longitude == rhs.longitude;
+    lhs.longitude == rhs.longitude &&
+    lhs.address == rhs.address;
 }
 
 template<typename ContainerAllocator1, typename ContainerAllocator2>
@@ -104,12 +110,12 @@ struct IsMessage< ::midterm_project::WeatherRequest_<ContainerAllocator> const>
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::midterm_project::WeatherRequest_<ContainerAllocator> >
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::midterm_project::WeatherRequest_<ContainerAllocator> const>
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
@@ -128,12 +134,12 @@ struct MD5Sum< ::midterm_project::WeatherRequest_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "680c6dc7da65a2421a822205dcbdb600";
+    return "bb885d452db3635f26cf1a2915f879f6";
   }
 
   static const char* value(const ::midterm_project::WeatherRequest_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x680c6dc7da65a242ULL;
-  static const uint64_t static_value2 = 0x1a822205dcbdb600ULL;
+  static const uint64_t static_value1 = 0xbb885d452db3635fULL;
+  static const uint64_t static_value2 = 0x26cf1a2915f879f6ULL;
 };
 
 template<class ContainerAllocator>
@@ -154,6 +160,7 @@ struct Definition< ::midterm_project::WeatherRequest_<ContainerAllocator> >
   {
     return "float64 latitude\n"
 "float64 longitude\n"
+"string address\n"
 ;
   }
 
@@ -174,6 +181,7 @@ namespace serialization
     {
       stream.next(m.latitude);
       stream.next(m.longitude);
+      stream.next(m.address);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -196,6 +204,8 @@ struct Printer< ::midterm_project::WeatherRequest_<ContainerAllocator> >
     Printer<double>::stream(s, indent + "  ", v.latitude);
     s << indent << "longitude: ";
     Printer<double>::stream(s, indent + "  ", v.longitude);
+    s << indent << "address: ";
+    Printer<std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>>>::stream(s, indent + "  ", v.address);
   }
 };
 

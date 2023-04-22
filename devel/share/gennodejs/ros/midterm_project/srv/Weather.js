@@ -23,6 +23,7 @@ class WeatherRequest {
       // initObj === null is a special case for deserialization where we don't initialize fields
       this.latitude = null;
       this.longitude = null;
+      this.address = null;
     }
     else {
       if (initObj.hasOwnProperty('latitude')) {
@@ -37,6 +38,12 @@ class WeatherRequest {
       else {
         this.longitude = 0.0;
       }
+      if (initObj.hasOwnProperty('address')) {
+        this.address = initObj.address
+      }
+      else {
+        this.address = '';
+      }
     }
   }
 
@@ -46,6 +53,8 @@ class WeatherRequest {
     bufferOffset = _serializer.float64(obj.latitude, buffer, bufferOffset);
     // Serialize message field [longitude]
     bufferOffset = _serializer.float64(obj.longitude, buffer, bufferOffset);
+    // Serialize message field [address]
+    bufferOffset = _serializer.string(obj.address, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -57,11 +66,15 @@ class WeatherRequest {
     data.latitude = _deserializer.float64(buffer, bufferOffset);
     // Deserialize message field [longitude]
     data.longitude = _deserializer.float64(buffer, bufferOffset);
+    // Deserialize message field [address]
+    data.address = _deserializer.string(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 16;
+    let length = 0;
+    length += _getByteLength(object.address);
+    return length + 20;
   }
 
   static datatype() {
@@ -71,7 +84,7 @@ class WeatherRequest {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '680c6dc7da65a2421a822205dcbdb600';
+    return 'bb885d452db3635f26cf1a2915f879f6';
   }
 
   static messageDefinition() {
@@ -79,6 +92,7 @@ class WeatherRequest {
     return `
     float64 latitude
     float64 longitude
+    string address
     
     `;
   }
@@ -101,6 +115,13 @@ class WeatherRequest {
     }
     else {
       resolved.longitude = 0.0
+    }
+
+    if (msg.address !== undefined) {
+      resolved.address = msg.address;
+    }
+    else {
+      resolved.address = ''
     }
 
     return resolved;
@@ -202,6 +223,6 @@ class WeatherResponse {
 module.exports = {
   Request: WeatherRequest,
   Response: WeatherResponse,
-  md5sum() { return '204ae4bdd15d2eba6c7e323a2fe04a4e'; },
+  md5sum() { return '6c4fff7ab8a37c28c986d4cb0e252774'; },
   datatype() { return 'midterm_project/Weather'; }
 };
