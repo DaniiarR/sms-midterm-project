@@ -8,4 +8,6 @@ Source code has comments explaining the functionality.
 Launch file stored at /src/midterm_project/weather.launch
 
 To run the project, execute:
-	roslaunch midterm_project weather.launch
+```
+roslaunch midterm_project weather.launch
+```
