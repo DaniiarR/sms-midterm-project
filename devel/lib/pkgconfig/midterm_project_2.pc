@@ -1,0 +1,8 @@
+prefix=/home/daniiarr/catkin_ws/devel
+
+Name: midterm_project_2
+Description: Description of midterm_project_2
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

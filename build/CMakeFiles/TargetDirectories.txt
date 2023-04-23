@@ -71,3 +71,10 @@
 /home/daniiarr/catkin_ws/build/midterm_project/CMakeFiles/weather_client_node.dir
 /home/daniiarr/catkin_ws/build/midterm_project/CMakeFiles/midterm_project_geneus.dir
 /home/daniiarr/catkin_ws/build/midterm_project/CMakeFiles/midterm_project_genpy.dir
+/home/daniiarr/catkin_ws/build/midterm_project_2/CMakeFiles/install/strip.dir
+/home/daniiarr/catkin_ws/build/midterm_project_2/CMakeFiles/install/local.dir
+/home/daniiarr/catkin_ws/build/midterm_project_2/CMakeFiles/install.dir
+/home/daniiarr/catkin_ws/build/midterm_project_2/CMakeFiles/list_install_components.dir
+/home/daniiarr/catkin_ws/build/midterm_project_2/CMakeFiles/rebuild_cache.dir
+/home/daniiarr/catkin_ws/build/midterm_project_2/CMakeFiles/edit_cache.dir
+/home/daniiarr/catkin_ws/build/midterm_project_2/CMakeFiles/test.dir

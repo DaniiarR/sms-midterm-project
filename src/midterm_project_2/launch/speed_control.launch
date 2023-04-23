@@ -1,0 +1,9 @@
+<launch>
+  <!-- Start publisher node -->
+  <node pkg="midterm_project_2" type="publisher_node.py" name="publisher_node" output="screen">
+  </node>
+
+  <!-- Start subscriber node -->
+  <node pkg="midterm_project_2" type="subscriber_node.py" name="subscriber_node" output="screen">
+  </node>
+</launch>

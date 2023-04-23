@@ -18,10 +18,16 @@ set(CMAKE_MAKEFILE_DEPENDS
   "midterm_project/catkin_generated/ordered_paths.cmake"
   "midterm_project/catkin_generated/package.cmake"
   "midterm_project/cmake/midterm_project-genmsg.cmake"
+  "midterm_project_2/catkin_generated/ordered_paths.cmake"
+  "midterm_project_2/catkin_generated/package.cmake"
   "/home/daniiarr/catkin_ws/devel/share/midterm_project/cmake/midterm_project-msg-paths.cmake"
   "/home/daniiarr/catkin_ws/src/CMakeLists.txt"
   "/home/daniiarr/catkin_ws/src/midterm_project/CMakeLists.txt"
   "/home/daniiarr/catkin_ws/src/midterm_project/package.xml"
+  "/home/daniiarr/catkin_ws/src/midterm_project_2/CMakeLists.txt"
+  "/home/daniiarr/catkin_ws/src/midterm_project_2/package.xml"
+  "/home/daniiarr/catkin_ws/src/midterm_project_2/scripts/publisher_node.py"
+  "/home/daniiarr/catkin_ws/src/midterm_project_2/scripts/subscriber_node.py"
   "/opt/ros/noetic/share/catkin/cmake/all.cmake"
   "/opt/ros/noetic/share/catkin/cmake/assert.cmake"
   "/opt/ros/noetic/share/catkin/cmake/atomic_configure_file.cmake"
@@ -69,6 +75,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/opt/ros/noetic/share/catkin/cmake/templates/pkgConfig-version.cmake.in"
   "/opt/ros/noetic/share/catkin/cmake/templates/pkgConfig.cmake.in"
   "/opt/ros/noetic/share/catkin/cmake/templates/rosinstall.in"
+  "/opt/ros/noetic/share/catkin/cmake/templates/script.py.in"
   "/opt/ros/noetic/share/catkin/cmake/templates/setup.bash.in"
   "/opt/ros/noetic/share/catkin/cmake/templates/setup.sh.in"
   "/opt/ros/noetic/share/catkin/cmake/templates/setup.zsh.in"
@@ -218,6 +225,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "gtest/googlemock/CMakeFiles/CMakeDirectoryInformation.cmake"
   "gtest/googletest/CMakeFiles/CMakeDirectoryInformation.cmake"
   "midterm_project/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "midterm_project_2/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
