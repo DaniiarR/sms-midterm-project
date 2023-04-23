@@ -1,5 +1,5 @@
 # sms-midterm-project
-
+GitHub link: https://github.com/DaniiarR/sms-midterm-project
 ## Project 1
 This project is about implementing a weather server that uses the positionstack API to get the latitude and longitude from an address, and then the OpenWeatherMap API to get the weather information for those coordinates.
 
